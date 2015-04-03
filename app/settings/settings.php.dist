@@ -1,0 +1,24 @@
+<?php
+
+// Do not modify this file. Instead, copy it to settings.php and modify that one.
+
+return [
+    'db' => [
+        // Illuminate/database configuration
+        'driver'    => 'mysql',
+        'host'      => 'localhost',
+        'database'  => 'bookshelf',
+        'username'  => 'bookshelf',
+        'password'  => 'bookshelf',
+        'charset'   => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+        'prefix'    => '',
+    ],
+    'view' => [
+        'template_path' => 'app/templates',
+        'twig' => [
+            'cache' => 'cache/twig',
+            'debug' => true,
+        ],
+    ],
+];

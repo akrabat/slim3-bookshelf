@@ -13,7 +13,6 @@
     - php5-imagick
     - php5-mysql
     - php5-mcrypt
-    - php5-xdebug
     - php5-dev
     - libapache2-mod-php5
     - phpmyadmin
@@ -38,6 +37,20 @@
 - name: Configure PHP (apache2)
   copy: src=php_overrides.ini dest=/etc/php5/apache2/conf.d/99-php_overrides.ini mode=644
 
+# Xdebug
+- name: Ensure stock Xdebug package is uninstalled
+  apt: name={{ item }} state=absent purge=yes
+  with_items:
+    - php5-xdebug
+- name: Install latest Xdebug
+  shell: pecl install xdebug creates=/usr/lib/php5/20121212/xdebug.so
+
+- name: Configure PHP for Xdebug (cli)
+  copy: src=xdebug.ini dest=/etc/php5/cli/conf.d/21-xdebug.ini mode=644
+
+- name: Configure PHP for Xdebug (apache2)
+  copy: src=xdebug.ini dest=/etc/php5/apache2/conf.d/21-xdebug.ini mode=644
+
 # Composer
 - name: Install composer
   shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin creates=/usr/local/bin/composer
@@ -60,19 +73,19 @@
   when: install_profiler
 
 # Uprofiler
-- name: Install uprofiler
+- name: Install Uprofiler
   shell: export COMPOSER_HOME=/usr/local/composer && composer global require 'friendsofphp/uprofiler=dev-master' creates=/usr/local/composer/vendor/friendsofphp/uprofiler/composer.json
   when: install_profiler
 
-- name: Compile uprofiler
+- name: Compile Uprofiler
   shell: cd /usr/local/composer/vendor/friendsofphp/uprofiler/extension && phpize && ./configure && make && make install creates=/usr/lib/php5/20121212/uprofiler.so
   when: install_profiler
 
-- name: Configure PHP (cli)
+- name: Configure PHP for Uprofiler (cli)
   copy: src=uprofiler.ini dest=/etc/php5/cli/conf.d/21-uprofiler.ini mode=644
   when: install_profiler
 
-- name: Configure PHP (apache2)
+- name: Configure PHP for Uprofiler (apache2)
   copy: src=uprofiler.ini dest=/etc/php5/apache2/conf.d/21-uprofiler.ini mode=644
   when: install_profiler
 

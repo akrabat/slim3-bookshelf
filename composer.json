@@ -1,5 +1,30 @@
 {
+    "name": "akrabat/slim-bookshelf",
+    "description": "Example Slim Framework 3 application.",
+    "license": "BSD-3-Clause",
+    "type": "project",
+    "keywords": ["slim-framework"],
+    "authors": [
+        {
+            "name": "Rob Allen",
+            "email": "rob@akrabat.com",
+            "homepage": "http://akrabat.com"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bookshelf\\": "app/src/Bookshelf"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.6"
+    },
     "require": {
-        "slim/slim": "dev-develop"
+        "slim/slim": "dev-develop",
+        "slim/twig-view": "~1.0",
+        "illuminate/database": "~5.0"
     }
 }

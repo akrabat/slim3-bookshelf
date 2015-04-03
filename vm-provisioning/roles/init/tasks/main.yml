@@ -30,12 +30,15 @@
     - php5-imagick
     - php5-mysql
     - php5-mcrypt
-    - php5-xdebug
     - php5-dev
     - libapache2-mod-php5
     - phpmyadmin
     - mongodb
     - php5-mongo
+
+# Xdebug
+- name: Install latest Xdebug
+  shell: pecl install xdebug creates=/usr/lib/php5/20121212/xdebug.so
 
 # Mailcatcher
 - name: Add Mailcatcher

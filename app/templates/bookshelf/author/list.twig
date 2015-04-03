@@ -1,0 +1,13 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Authors - {% endblock %}
+
+{% block content %}
+<h1>Authors</h1>
+
+<ul>
+{% for author in authors %}
+    <li>{{ author.name }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
