@@ -6,7 +6,7 @@ mysql_username:      bookshelf
 mysql_password:      bookshelf
 
 # set seed_database to false if you don't want to seed the database
-seed_database: false
+seed_database: true
 seed_database_file: /vagrant/data/seed.sql
 
 # Apache vhost
