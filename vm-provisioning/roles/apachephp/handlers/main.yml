@@ -1,0 +1,12 @@
+---
+- name: Restart apache
+  service: name=apache2 state=restarted
+
+- name: Import PHPMyAdmin configuration tables
+  mysql_db: >
+    name=phpmyadmin
+    state=import
+    login_user=root
+    login_password={{ mysql_root_password }}
+    target=/usr/share/doc/phpmyadmin/examples/create_tables.sql.gz
+

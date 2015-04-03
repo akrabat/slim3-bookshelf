@@ -1,0 +1,8 @@
+---
+# import database when notified that the database has been created.
+- name: Import database
+  mysql_db: name={{ mysql_dbname }} state=import login_host=localhost target={{ seed_database_file }}
+  when: seed_database
+
+- name: Restart webserver
+  service: name=apache2 state=restarted

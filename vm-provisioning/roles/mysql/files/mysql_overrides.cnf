@@ -1,0 +1,8 @@
+# set max_allowed_packet
+
+[mysqld]
+max_allowed_packet	= 40M
+bind-address       = 0.0.0.0
+
+[mysqldump]
+max_allowed_packet  = 40M

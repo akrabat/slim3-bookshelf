@@ -1,0 +1,41 @@
+---
+- name: Add dependencies (apt)
+  apt: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - ruby-all-dev
+    - libsqlite3-dev
+  sudo: yes
+
+- name: Add Mailcatcher
+  gem: name={{ item }} state=present user_install=no
+  with_items:
+    - mailcatcher
+  sudo: yes
+
+- name: Add init.d script
+  copy: src=mailcatcher dest=/etc/init.d/mailcatcher mode=755
+
+- name: Configure PHP (cli)
+  copy: src=mailcatcher.ini dest=/etc/php5/cli/conf.d/99-mailcatcher.ini mode=644
+
+- name: Configure PHP (apache2)
+  copy: src=mailcatcher.ini dest=/etc/php5/apache2/conf.d/99-mailcatcher.ini mode=644
+
+- name: update service
+  command: /usr/sbin/update-rc.d mailcatcher defaults creates=/etc/rc2.d/S18mailcatcher
+
+- name: update service
+  service: name=mailcatcher state=started
+
+- name: Remove mail server packages
+  apt: name={{ item }} state=absent purge=yes
+  with_items:
+    - mailutils
+    - postfix
+    - sendmail
+    - exim4
+    - exim4-base
+    - exim4-config
+    - exim4-daemon-light
+  sudo: yes

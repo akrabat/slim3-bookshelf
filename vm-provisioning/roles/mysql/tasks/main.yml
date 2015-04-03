@@ -1,0 +1,39 @@
+---
+- name: Install MySQL packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - mysql-client
+    - mysql-server
+    - python-mysqldb
+
+- name: Update MySQL configuration
+  copy: src=mysql_overrides.cnf dest=/etc/mysql/conf.d/mysql_overrides.cnf mode=644
+
+- name: Start MySQL service
+  service: name=mysql state=restarted
+
+- name: Setup MySQL root password
+  mysql_user: name=root password={{ mysql_root_password }} host={{ item }} state=present
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Setup MySQL creds for root user
+  template: src=root.my.cnf dest=/root/.my.cnf owner=root mode=0600
+
+- name: Delete blank MySQL users
+  mysql_user: name="" host={{ item }} state=absent
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Drop MySQL test database
+  mysql_db: name=test state=absent
+
+- name: Copy backup and restore scripts
+  template: src={{ item }} dest=/usr/local/bin/{{ item }} owner=root mode=0755
+  with_items:
+    - backup_db.sh
+    - restore_db.sh

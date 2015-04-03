@@ -1,0 +1,14 @@
+---
+- hosts: 127.0.0.1
+  remote_user: vagrant
+  sudo: yes
+
+  vars_files:
+    - variables.yml
+
+  roles:
+    - init
+    - mysql
+    - apachephp
+    - mailcatcher
+    - website
