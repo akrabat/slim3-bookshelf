@@ -10,7 +10,7 @@ Pack. If you install the `vagrant-hostsupdater` Vagrant plugin, then your hosts
 file will be automatically updated too.
 
 1. `vagrant up`
-2. navigate to http::/slim-bookshelf.localhost
+2. navigate to http://slim-bookshelf.localhost
 
 
 If you don't use the hostsupdater plugin, then the /etc/hosts record you need
