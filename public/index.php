@@ -22,7 +22,6 @@ $capsule->bootEloquent();
 // Register the view
 $app->register($app['View']);
 
-
 // Register the routes
 require 'app/src/routes.php';
 
