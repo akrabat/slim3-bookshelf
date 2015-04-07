@@ -24,3 +24,7 @@ $app['View'] = function ($c) {
 $app['Bookshelf\AuthorController'] = function ($c) {
     return new Bookshelf\AuthorController($c['view']);
 };
+
+$app['Bookshelf\BookController'] = function ($c) {
+    return new Bookshelf\BookController($c['view']);
+};

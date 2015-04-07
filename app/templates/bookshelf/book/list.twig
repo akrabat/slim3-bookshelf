@@ -1,0 +1,15 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'All books' %}
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<h1>{{title}}</h1>
+
+<ul>
+{% for book in books %}
+    <li>{{ book.title }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
