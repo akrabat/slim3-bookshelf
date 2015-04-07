@@ -7,7 +7,7 @@
 
 <ul>
 {% for author in authors %}
-    <li>{{ author.name }}</li>
+    <li><a href="{{ url_for('author', {author_id: author.id}) }}">{{ author.name }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

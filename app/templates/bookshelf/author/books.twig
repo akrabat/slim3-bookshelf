@@ -1,0 +1,17 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Books by ' ~ author.name %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<ul>
+{% for book in books %}
+    <li>{{ book.title }}</li>
+{% endfor %}
+</ul>
+
+<p><a href="{{ url_for('list-authors') }}">Return</a></p>
+
+{% endblock %}
