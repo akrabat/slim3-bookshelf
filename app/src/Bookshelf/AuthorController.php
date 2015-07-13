@@ -15,7 +15,7 @@ final class AuthorController
 
     public function listAuthors($request, $response)
     {
-        $this->view->render('bookshelf/author/list.twig', [
+        return $this->view->render($response, 'bookshelf/author/list.twig', [
             'authors' => Author::all()
         ]);
     }
@@ -30,7 +30,7 @@ final class AuthorController
             }
             $books = $author->books;
         }
-        $this->view->render('bookshelf/author/books.twig', [
+        return $this->view->render($response, 'bookshelf/author/books.twig', [
             'author' => $author,
             'books' => $books,
         ]);

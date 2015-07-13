@@ -16,7 +16,7 @@ final class BookController
 
     public function listBooks($request, $response, $params)
     {
-        $this->view->render('bookshelf/book/list.twig', [
+        return $this->view->render($response, 'bookshelf/book/list.twig', [
             'books' => Book::all(),
         ]);
     }
