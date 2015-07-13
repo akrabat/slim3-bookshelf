@@ -1,30 +1,34 @@
 <?php
 // DIC configuration
-
+$container = $app->getContainer();
 
 // Database
-$app['Capsule'] = function ($c) {
+$container['capsule'] = function ($c) {
     $capsule = new Illuminate\Database\Capsule\Manager;
     $capsule->addConnection($c['settings']['db']);
     return $capsule;
 };
+// Register the database connection with Eloquent
+$capsule = $app->capsule;
+$capsule->bootEloquent();
+
 
 // View
-$app['View'] = function ($c) {
-    $settings = $c['settings']['view'];
-    $view = new \Slim\Views\Twig($settings['template_path'], $settings['twig']);
+$view = new \Slim\Views\Twig(
+    $app->settings['view']['template_path'],
+    $app->settings['view']['twig']
+);
+$view->addExtension(new Twig_Extension_Debug());
+$view->addExtension(new \Slim\Views\TwigExtension($app->router, $app->request->getUri()));
+$container->register($view);
 
-    $twig = $view->getEnvironment();
-    $twig->addExtension(new Twig_Extension_Debug());
-    
-    return $view;
-};
+
 
 // controller
-$app['Bookshelf\AuthorController'] = function ($c) {
+$container['Bookshelf\AuthorController'] = function ($c) {
     return new Bookshelf\AuthorController($c['view']);
 };
 
-$app['Bookshelf\BookController'] = function ($c) {
+$container['Bookshelf\BookController'] = function ($c) {
     return new Bookshelf\BookController($c['view']);
 };
