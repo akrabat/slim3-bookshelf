@@ -2,15 +2,19 @@
 
 namespace Bookshelf;
 
+use Slim\Views\Twig;
+use Slim\Router;
 use Bookshelf\Author;
 
 final class AuthorController
 {
     private $view;
+    private $router;
 
-    public function __construct($view)
+    public function __construct(Twig $view, Router $router)
     {
         $this->view = $view;
+        $this->router = $router;
     }
 
     public function listAuthors($request, $response)

@@ -26,9 +26,9 @@ $container->register($view);
 
 // controller
 $container['Bookshelf\AuthorController'] = function ($c) {
-    return new Bookshelf\AuthorController($c['view']);
+    return new Bookshelf\AuthorController($c['view'], $c['router']);
 };
 
 $container['Bookshelf\BookController'] = function ($c) {
-    return new Bookshelf\BookController($c['view']);
+    return new Bookshelf\BookController($c['view'], $c['router']);
 };
