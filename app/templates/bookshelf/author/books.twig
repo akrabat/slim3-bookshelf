@@ -12,6 +12,9 @@
 {% endfor %}
 </ul>
 
-<p><a href="{{ path_for('list-authors') }}">Return</a></p>
+<p>
+    <a href="{{ path_for('list-authors') }}">Return</a>
+    | <a href="{{ path_for('edit-author', {author_id: author.id}) }}">Edit author details</a>
+</p>
 
 {% endblock %}

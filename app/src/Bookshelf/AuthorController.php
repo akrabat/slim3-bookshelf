@@ -39,4 +39,32 @@ final class AuthorController
             'books' => $books,
         ]);
     }
+
+    public function editAuthor($request, $response, $params)
+    {
+        $author = Author::find((int)$params['author_id']);
+        if (!$author) {
+            $uri = $request->getUri()->withQuery('')->withPath($this->router->pathFor('list-authors'));
+            return $response->withRedirect((string)$uri);
+        }
+
+        $errors = null;
+        if ($request->isPost()) {
+            $data = $request->getParsedBody();
+            $validator = $author->getValidator($data);
+            if ($validator->validate()) {
+                $author->update($data);
+                
+                $uri = $request->getUri()->withQuery('')->withPath($this->router->pathFor('author', ['author_id' => $author->id]));
+                return $response->withRedirect((string)$uri);
+            } else {
+                $errors = $validator->errors();
+            }
+        }
+
+        return $this->view->render($response, 'bookshelf/author/edit.twig', [
+            'author' => $author,
+            'errors' => $errors,
+        ]);
+    }
 }

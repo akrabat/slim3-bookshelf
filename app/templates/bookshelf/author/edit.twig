@@ -1,0 +1,21 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Edit ' ~ author.name %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+
+<form method="POST" action="{{ path_for('edit-author', {author_id: author.id}) }}">
+  <div class="form-group {% if errors.name %}has-error{% endif %}">
+    <label class="control-label" for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" value="{{ author.name }}" >
+    {% if errors.name %}<span class="help-block">{{ errors.name.0 }}</span>{% endif %}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a class="btn btn-default" href="{{ path_for('author', {author_id: author.id}) }}">Cancel</a>
+</form>
+
+{% endblock %}
