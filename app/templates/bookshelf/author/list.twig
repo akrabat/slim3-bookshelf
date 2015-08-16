@@ -8,7 +8,7 @@
 
 <ul>
 {% for author in authors %}
-    <li><a href="{{ path_for('author', {author_id: author.id}) }}">{{ author.name }}</a></li>
+    <li><a href="{{base_url()}}{{ path_for('author', {author_id: author.id}) }}">{{ author.name }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
