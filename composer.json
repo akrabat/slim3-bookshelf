@@ -26,6 +26,7 @@
         "slim/slim": "^3.0@beta",
         "slim/twig-view": "^1.0",
         "illuminate/database": "~5.0",
-        "vlucas/valitron": "^1.2"
+        "vlucas/valitron": "^1.2",
+        "slim/csrf": "^0.2.0"
     }
 }

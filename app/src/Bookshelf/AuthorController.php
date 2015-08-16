@@ -50,21 +50,29 @@ final class AuthorController
 
         $errors = null;
         if ($request->isPost()) {
-            $data = $request->getParsedBody();
-            $validator = $author->getValidator($data);
-            if ($validator->validate()) {
-                $author->update($data);
-                
-                $uri = $request->getUri()->withQuery('')->withPath($this->router->pathFor('author', ['author_id' => $author->id]));
-                return $response->withRedirect((string)$uri);
+            if ($request->getAttribute('csrf_status') === false) {
+                $errors['form'] = 'CSRF faiure';
             } else {
-                $errors = $validator->errors();
+                $data = $request->getParsedBody();
+                $validator = $author->getValidator($data);
+                if ($validator->validate()) {
+                    $author->update($data);
+                    
+                    $uri = $request->getUri()->withQuery('')->withPath($this->router->pathFor('author', ['author_id' => $author->id]));
+                    return $response->withRedirect((string)$uri);
+                } else {
+                    $errors = $validator->errors();
+                }
             }
         }
 
         return $this->view->render($response, 'bookshelf/author/edit.twig', [
             'author' => $author,
             'errors' => $errors,
+            'csrf' => [
+                        'name' => $request->getAttribute('csrf_name'),
+                        'value' => $request->getAttribute('csrf_value'),
+                      ],
         ]);
     }
 }

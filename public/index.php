@@ -3,6 +3,7 @@
 chdir(dirname(__DIR__));
 
 require 'vendor/autoload.php';
+session_start();
 
 if (file_exists('app/settings.php')) {
     $settings = require 'app/settings.php';
@@ -14,6 +15,7 @@ if (file_exists('app/settings.php')) {
 $app = new \Slim\App($settings);
 
 require 'app/src/dependencies.php';
+require 'app/src/middleware.php';
 
 // Register the routes
 require 'app/src/routes.php';

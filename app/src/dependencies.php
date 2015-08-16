@@ -24,6 +24,16 @@ $container['view'] = function ($c) {
     return $view;
 };
 
+// CSRF guard
+$container['csrf'] = function ($c) {
+    $guard = new \Slim\Csrf\Guard();
+    $guard->setFailureCallable(function ($request, $response, $next) {
+        $request = $request->withAttribute("csrf_status", false);
+        return $next($request, $response);
+    });
+    return $guard;
+};
+
 // controller
 $container['Bookshelf\AuthorController'] = function ($c) {
     return new Bookshelf\AuthorController($c['view'], $c['router']);
