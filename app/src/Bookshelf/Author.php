@@ -13,10 +13,10 @@ final class Author extends Model
     public $timestamps = false;
 
     /**
-     * Fields that cannot be updated via update()
+     * Fields that can be updated via update()
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $fillable = ['name'];
 
     public function books()
     {
