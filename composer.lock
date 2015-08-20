@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "616b73432b0a039924986f5913d18158",
+    "hash": "8ec771a9a7237c467940dec4e69a8052",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -540,21 +540,21 @@
         },
         {
             "name": "slim/csrf",
-            "version": "0.2.0",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slimphp/Slim-Csrf.git",
-                "reference": "83628c549fd96dd6d04aad1e28c060ffe464aba1"
+                "reference": "59cb13e634a3a9c30000e750a6ba5dd385bb1595"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim-Csrf/zipball/83628c549fd96dd6d04aad1e28c060ffe464aba1",
-                "reference": "83628c549fd96dd6d04aad1e28c060ffe464aba1",
+                "url": "https://api.github.com/repos/slimphp/Slim-Csrf/zipball/59cb13e634a3a9c30000e750a6ba5dd385bb1595",
+                "reference": "59cb13e634a3a9c30000e750a6ba5dd385bb1595",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0",
-                "psr/http-message": "1.0"
+                "php": ">=5.5.0",
+                "psr/http-message": "^1.0"
             },
             "require-dev": {
                 "slim/slim": "3.x-dev"
@@ -576,7 +576,7 @@
                     "homepage": "http://joshlockhart.com"
                 }
             ],
-            "description": "Slim Framework CSRF protection middleware",
+            "description": "Slim Framework 3 CSRF protection middleware",
             "homepage": "http://slimframework.com",
             "keywords": [
                 "csrf",
@@ -584,7 +584,7 @@
                 "middleware",
                 "slim"
             ],
-            "time": "2015-08-16 15:01:51"
+            "time": "2015-08-18 13:36:02"
         },
         {
             "name": "slim/slim",
@@ -1274,16 +1274,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.4",
+            "version": "4.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "55bf1d6092b0e13a1f26bd5eaffeef3d8ad85ea7"
+                "reference": "9b7417edaf28059ea63d86be941e6004dbfcc0cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/55bf1d6092b0e13a1f26bd5eaffeef3d8ad85ea7",
-                "reference": "55bf1d6092b0e13a1f26bd5eaffeef3d8ad85ea7",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9b7417edaf28059ea63d86be941e6004dbfcc0cc",
+                "reference": "9b7417edaf28059ea63d86be941e6004dbfcc0cc",
                 "shasum": ""
             },
             "require": {
@@ -1342,24 +1342,24 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-08-15 04:21:23"
+            "time": "2015-08-19 09:20:57"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "2.3.6",
+            "version": "2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "18dfbcb81d05e2296c0bcddd4db96cade75e6f42"
+                "reference": "5e2645ad49d196e020b85598d7c97e482725786a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/18dfbcb81d05e2296c0bcddd4db96cade75e6f42",
-                "reference": "18dfbcb81d05e2296c0bcddd4db96cade75e6f42",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/5e2645ad49d196e020b85598d7c97e482725786a",
+                "reference": "5e2645ad49d196e020b85598d7c97e482725786a",
                 "shasum": ""
             },
             "require": {
-                "doctrine/instantiator": "~1.0,>=1.0.2",
+                "doctrine/instantiator": "^1.0.2",
                 "php": ">=5.3.3",
                 "phpunit/php-text-template": "~1.2",
                 "sebastian/exporter": "~1.2"
@@ -1398,7 +1398,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2015-07-10 06:54:24"
+            "time": "2015-08-19 09:14:08"
         },
         {
             "name": "sebastian/comparator",
