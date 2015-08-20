@@ -3,6 +3,7 @@
 CREATE TABLE authors (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(100) NOT NULL,
+  biography mediumtext,
 
   PRIMARY KEY (id)
 ) ENGINE=InnoDB;
@@ -18,7 +19,7 @@ CREATE TABLE books (
 ) ENGINE=InnoDB;
 
 
-INSERT INTO authors (name) VALUES ('Suzanne Collins');
+INSERT INTO authors (name, biography) VALUES ('Suzanne Collins', 'Suzanne Marie Collins is an American television writer and novelist, best known as the author of The Underland Chronicles and The Hunger Games trilogy');
 SET @id = LAST_INSERT_ID();
 INSERT INTO books (author_id, title, isbn) VALUES (@id, 'Gregor the Overlander', '9780439678131');
 INSERT INTO books (author_id, title, isbn) VALUES (@id, 'Gregor and the Prophecy of Bane', '9780439650762');

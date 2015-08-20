@@ -5,7 +5,10 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
+<p>{{ author.biography }}</p>
 
+
+<h2>Books</h2>
 <ul>
 {% for book in books %}
     <li>{{ book.title }}</li>

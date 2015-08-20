@@ -13,10 +13,17 @@
         <span class="help-block">{{ errors.form }}</span>
     </div>
     {% endif %}
+
     <div class="form-group {% if errors.name %}has-error{% endif %}">
         <label class="control-label" for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name" value="{{ author.name }}" >
         {% if errors.name %}<span class="help-block">{{ errors.name.0 }}</span>{% endif %}
+    </div>
+
+    <div class="form-group {% if errors.biography %}has-error{% endif %}">
+        <label class="control-label" for="biography">Biography</label>
+        <textarea class="form-control" id="biography" name="biography" rows="7">{{ author.biography }}</textarea>
+        {% if errors.biography %}<span class="help-block">{{ errors.biography.0 }}</span>{% endif %}
     </div>
 
     <input type="hidden" name="csrf_name" value="{{ csrf.name }}">
