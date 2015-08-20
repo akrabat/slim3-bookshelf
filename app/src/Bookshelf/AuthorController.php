@@ -4,17 +4,20 @@ namespace Bookshelf;
 
 use Slim\Views\Twig;
 use Slim\Router;
+use Slim\Flash\Messages as FlashMessages;
 use Bookshelf\Author;
 
 final class AuthorController
 {
     private $view;
     private $router;
+    private $flash;
 
-    public function __construct(Twig $view, Router $router)
+    public function __construct(Twig $view, Router $router, FlashMessages $flash)
     {
         $this->view = $view;
         $this->router = $router;
+        $this->flash = $flash;
     }
 
     public function listAuthors($request, $response)
@@ -57,6 +60,8 @@ final class AuthorController
                 $validator = $author->getValidator($data);
                 if ($validator->validate()) {
                     $author->update($data);
+
+                    $this->flash->addMessage('message', 'Author updated');
                     
                     $uri = $request->getUri()->withQuery('')->withPath($this->router->pathFor('author', ['author_id' => $author->id]));
                     return $response->withRedirect((string)$uri);

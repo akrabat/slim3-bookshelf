@@ -20,6 +20,7 @@ $container['view'] = function ($c) {
     // Add extensions
     $view->addExtension(new Slim\Views\TwigExtension($c['router'], $c['request']->getUri()));
     $view->addExtension(new Twig_Extension_Debug());
+    $view->addExtension(new Bookshelf\TwigExtension($c['flash']));
 
     return $view;
 };
@@ -34,11 +35,16 @@ $container['csrf'] = function ($c) {
     return $guard;
 };
 
+// Flash messages
+$container['flash'] = function ($c) {
+    return new \Slim\Flash\Messages;
+};
+
 // controller
 $container['Bookshelf\AuthorController'] = function ($c) {
-    return new Bookshelf\AuthorController($c['view'], $c['router']);
+    return new Bookshelf\AuthorController($c['view'], $c['router'], $c['flash']);
 };
 
 $container['Bookshelf\BookController'] = function ($c) {
-    return new Bookshelf\BookController($c['view'], $c['router']);
+    return new Bookshelf\BookController($c['view'], $c['router'], $c['flash']);
 };
