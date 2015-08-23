@@ -11,16 +11,10 @@
             "homepage": "http://akrabat.com"
         }
     ],
-    "config": {
-        "bin-dir": "bin"
-    },
     "autoload": {
         "psr-4": {
             "Bookshelf\\": "app/src/Bookshelf"
         }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^4.6"
     },
     "require": {
         "slim/slim": "^3.0@beta",
