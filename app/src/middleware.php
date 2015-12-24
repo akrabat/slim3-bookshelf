@@ -1,4 +1,4 @@
 <?php
 // Middleware
 
-$app->add($app->csrf);
+$app->add($app->getContainer()->get('csrf'));
