@@ -26,12 +26,12 @@ final class Author extends Model
     /**
      * Update author with new data
      *
-     * @param  arrray $data
+     * @param  arrray $attributes
      * @return null
      */
-    public function update(array $data = [])
+    public function update(array $attributes = [], array $options = [])
     {
-        $validator = $this->getValidator($data);
+        $validator = $this->getValidator($attributes);
         if (!$validator->validate()) {
             $messages = [];
             foreach ($validator->errors() as $fieldName => $errors) {
@@ -41,7 +41,7 @@ final class Author extends Model
             throw new \Exception($message);
         }
 
-        return parent::update($data);
+        return parent::update($attributes);
     }
 
     /**
