@@ -8,10 +8,6 @@ $container['capsule'] = function ($c) {
     $capsule->addConnection($c['settings']['db']);
     return $capsule;
 };
-// Register the database connection with Eloquent
-$capsule = $app->capsule;
-$capsule->bootEloquent();
-
 
 // View
 $container['view'] = function ($c) {

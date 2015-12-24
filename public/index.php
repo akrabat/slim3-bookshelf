@@ -20,4 +20,8 @@ require 'app/src/middleware.php';
 // Register the routes
 require 'app/src/routes.php';
 
+// Register the database connection with Eloquent
+$capsule = $app->getContainer()->get('capsule');
+$capsule->bootEloquent();
+
 $app->run();
