@@ -17,7 +17,7 @@
         }
     },
     "require": {
-        "slim/slim": "^3.0@rc",
+        "slim/slim": "^3.0",
         "slim/twig-view": "^1.0",
         "illuminate/database": "~5.0",
         "vlucas/valitron": "^1.2",
