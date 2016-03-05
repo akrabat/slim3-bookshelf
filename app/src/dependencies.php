@@ -9,6 +9,11 @@ $container['capsule'] = function ($c) {
     return $capsule;
 };
 
+// Repositories
+$container['authorRepository'] = function ($c) {
+    return new Bookshelf\AuthorRepository;
+};
+
 // View
 $container['view'] = function ($c) {
     $view = new \Slim\Views\Twig($c['settings']['view']['template_path'], $c['settings']['view']['twig']);
@@ -38,7 +43,7 @@ $container['flash'] = function ($c) {
 
 // controller
 $container['Bookshelf\AuthorController'] = function ($c) {
-    return new Bookshelf\AuthorController($c['view'], $c['router'], $c['flash']);
+    return new Bookshelf\AuthorController($c['view'], $c['router'], $c['flash'], $c['authorRepository']);
 };
 
 $container['Bookshelf\BookController'] = function ($c) {

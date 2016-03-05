@@ -5,6 +5,7 @@ namespace Bookshelf;
 use Slim\Views\Twig;
 use Slim\Router;
 use Slim\Flash\Messages as FlashMessages;
+use Bookshelf\AuthorRespository;
 use Bookshelf\Author;
 
 final class AuthorController
@@ -13,24 +14,35 @@ final class AuthorController
     private $router;
     private $flash;
 
-    public function __construct(Twig $view, Router $router, FlashMessages $flash)
-    {
+    /**
+     * AuthorRepository
+     * @var [type]
+     */
+    private $authorRepository;
+
+    public function __construct(
+        Twig $view,
+        Router $router,
+        FlashMessages $flash,
+        AuthorRepository $authorRepository
+    ) {
         $this->view = $view;
         $this->router = $router;
         $this->flash = $flash;
+        $this->authorRepository = $authorRepository;
     }
 
     public function listAuthors($request, $response)
     {
         return $this->view->render($response, 'bookshelf/author/list.twig', [
-            'authors' => Author::all()
+            'authors' => $this->authorRepository->all()
         ]);
     }
 
     public function listBooks($request, $response, $params)
     {
         if (isset($params['author_id'])) {
-            $author = Author::find((int)$params['author_id']);
+            $author = $this->authorRepository->find((int)$params['author_id']);
             if (!$author) {
                 // not found
                 throw new \Exception("Author {$params['author_id']} not found");
@@ -45,7 +57,7 @@ final class AuthorController
 
     public function editAuthor($request, $response, $params)
     {
-        $author = Author::find((int)$params['author_id']);
+        $author = $this->authorRepository->find((int)$params['author_id']);
         if (!$author) {
             $uri = $request->getUri()->withQuery('')->withPath($this->router->pathFor('list-authors'));
             return $response->withRedirect((string)$uri);
