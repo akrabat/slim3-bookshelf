@@ -11,4 +11,4 @@ ini_set('session.use_cookies', 0);
 $autoloader = require dirname(__DIR__) . '/vendor/autoload.php';
 
 // Register test classes
-$autoloader->addPsr4('AppTest\\', __DIR__);
+$autoloader->addPsr4('BookshelfTest\\', __DIR__ . '/BookshelfTest');
