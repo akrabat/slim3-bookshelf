@@ -25,11 +25,13 @@
         "slim/flash": "^0.1.0"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^2.5"
+        "squizlabs/php_codesniffer": "^2.5",
+        "phpunit/phpunit": "^5.2"
     },
     "scripts": {
         "test": [
-            "php vendor/squizlabs/php_codesniffer/scripts/phpcs"
+            "php vendor/squizlabs/php_codesniffer/scripts/phpcs",
+            "php vendor/phpunit/phpunit/phpunit"
         ]
     }
 }
