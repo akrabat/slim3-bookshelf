@@ -63,7 +63,10 @@ final class AuthorController
 
                     $this->flash->addMessage('message', 'Author updated');
                     
-                    $uri = $request->getUri()->withQuery('')->withPath($this->router->pathFor('author', ['author_id' => $author->id]));
+                    $uri = $request
+                            ->getUri()
+                            ->withQuery('')
+                            ->withPath($this->router->pathFor('author', ['author_id' => $author->id]));
                     return $response->withRedirect((string)$uri);
                 } else {
                     $errors = $validator->errors();
