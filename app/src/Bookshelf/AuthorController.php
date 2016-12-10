@@ -5,7 +5,7 @@ namespace Bookshelf;
 use Slim\Views\Twig;
 use Slim\Router;
 use Slim\Flash\Messages as FlashMessages;
-use Bookshelf\AuthorRespository;
+use Bookshelf\AuthorRepository;
 use Bookshelf\Author;
 
 final class AuthorController
