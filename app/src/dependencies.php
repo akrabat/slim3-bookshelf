@@ -14,7 +14,8 @@ $container['view'] = function ($c) {
     $view = new \Slim\Views\Twig($c['settings']['view']['template_path'], $c['settings']['view']['twig']);
 
     // Add extensions
-    $view->addExtension(new Slim\Views\TwigExtension($c['router'], $c['request']->getUri()));
+    $url = preg_replace('/\/\w+\.php$/i', '', rtrim($c->get('request')->getUri(),'/'));
+    $view->addExtension(new Slim\Views\TwigExtension($c->get('router'), $url));   
     $view->addExtension(new Twig_Extension_Debug());
     $view->addExtension(new Bookshelf\TwigExtension($c['flash']));
 
