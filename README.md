@@ -2,6 +2,9 @@
 
 This is a simple Slim 3 application that manages a list of books
 
+## Composer
+
+This project uses [Composer](https://getcomposer.org). Run `composer install` to install the dependencies.
 
 ## Vagrant
 
