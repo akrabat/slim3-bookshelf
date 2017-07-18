@@ -4,6 +4,9 @@
 
 return [
     'settings' => [
+        'addContentLengthHeader' => false,
+        'displayErrorDetails' => true,
+
         'db' => [
             // Illuminate/database configuration
             'driver'    => 'mysql',

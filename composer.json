@@ -4,6 +4,11 @@
     "license": "BSD-3-Clause",
     "type": "project",
     "keywords": ["slim-framework"],
+    "config" : {
+        "platform": {
+           "php": "7.1"
+        }
+    },
     "authors": [
         {
             "name": "Rob Allen",

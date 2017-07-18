@@ -1,4 +1,0 @@
-# Bind to 0.0.0.0 so that we can get at mysql from outside the vm
-
-[mysqld]
-bind-address       = 0.0.0.0
