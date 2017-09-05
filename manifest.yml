@@ -1,0 +1,7 @@
+---
+applications:
+    - name: slim-bookshelf
+      memory: 64M
+      instances: 1
+      # host: my-app-hostname
+      random-route: true

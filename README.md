@@ -13,3 +13,8 @@ Pack.
 
 1. `vagrant up`
 2. navigate to http://localhost:8888
+
+
+## Cloud Foundry
+
+You can deploy this app to Cloud Foundry with `cf push`. Look in `manifest.yml` and `.bp-config/options.json` for configuration.
