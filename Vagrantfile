@@ -114,11 +114,13 @@ echo "========== Configure Mysql =========="
 mysql -u root -e "CREATE DATABASE bookshelf CHARACTER SET utf8 COLLATE utf8_general_ci";
 mysql -u root -e "CREATE USER bookshelf@'%' IDENTIFIED BY 'bookshelf'";
 mysql -u root -e "GRANT ALL PRIVILEGES ON bookshelf.* TO 'bookshelf'@'%'"
-if [ -e /vagrant/data/seed.sql ]; then
-mysql -u root bookshelf < /vagrant/data/seed.sql
+if [ -e /vagrant/data/seed-mysql.sql ]; then
+mysql -u root bookshelf < /vagrant/data/seed-mysql.sql
 fi
 
-
+# Allow anyone to connect to MySQL - don't do this in production!
+sed -i "s/^bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
+service mysql restart
 
 SHELL
 
