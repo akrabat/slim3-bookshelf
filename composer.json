@@ -22,6 +22,7 @@
         }
     },
     "require": {
+        "php" : ">=7.1",
         "slim/slim": "^3.0",
         "slim/twig-view": "^1.0",
         "illuminate/database": "~5.2",
