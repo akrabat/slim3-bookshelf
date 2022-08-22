@@ -11,6 +11,11 @@ It uses :
 
 This project uses [Composer](https://getcomposer.org). Run `composer install` to install the dependencies.
 
+## Run with php built-in web server
+
+1. cd public && php -s localhost:8888 index.php
+2. navigate to http://localhost:8888
+
 ## Vagrant
 
 To use the Vagrant VM, install Vagrant, Virtual Box & the VirtualBox Extension
